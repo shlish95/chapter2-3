@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.Users;
-import com.project.interfaces.UserRepositoryInterface;
+import com.project.interfaces.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.*;
 class CreateUserServiceTest {
 
     @Mock
-    UserRepositoryInterface userRepo;
+    UserRepository userRepo;
 
     @InjectMocks
     CreateUserService createUserService;

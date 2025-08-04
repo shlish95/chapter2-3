@@ -1,5 +1,6 @@
 package com.project.domain.entity;
 
+import com.project.domain.enums.ReservationStatus;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -13,18 +14,22 @@ public class Reservation {
     private Long reservationId;
     private Long userId;
     private Long concertId;
-    private String status;
+    @Enumerated(EnumType.STRING) private ReservationStatus status;
     private LocalDateTime reservedAt;
     private LocalDateTime expiresAt;
 
     protected Reservation() {}
 
-    public Reservation(Long userId, Long concertId, String status, LocalDateTime reservedAt, LocalDateTime expiresAt) {
+    public Reservation(Long userId, Long concertId, ReservationStatus status, LocalDateTime reservedAt, LocalDateTime expiresAt) {
         this.userId = userId;
         this.concertId = concertId;
         this.status = status;
         this.reservedAt = reservedAt;
         this.expiresAt = expiresAt;
+    }
+
+    public void changeStatus(ReservationStatus status) {
+        this.status = status;
     }
 
     public Long getReservationId() {
@@ -39,7 +44,7 @@ public class Reservation {
         return concertId;
     }
 
-    public String getStatus() {
+    public ReservationStatus getStatus() {
         return status;
     }
 

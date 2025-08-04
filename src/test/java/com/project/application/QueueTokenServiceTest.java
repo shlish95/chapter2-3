@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.QueueToken;
-import com.project.interfaces.QueueTokenRepositoryInterface;
+import com.project.interfaces.QueueTokenRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.*;
 public class QueueTokenServiceTest {
 
     @Mock
-    private QueueTokenRepositoryInterface tokenRepo;
+    private QueueTokenRepository tokenRepo;
 
     @InjectMocks
     private QueueTokenService tokenService;

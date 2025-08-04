@@ -1,7 +1,7 @@
 package com.project.infrastructure.persistence.reservationLookup;
 
 import com.project.domain.entity.Concert;
-import com.project.interfaces.ConcertRepositoryInterface;
+import com.project.interfaces.ConcertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class JpaConcertRepository implements ConcertRepositoryInterface {
+public class JpaConcertRepository implements ConcertRepository {
 
     private final SpringDataConcertRepository repo;
 

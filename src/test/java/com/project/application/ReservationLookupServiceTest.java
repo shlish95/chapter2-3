@@ -1,13 +1,11 @@
 package com.project.application;
 
-import com.project.domain.dto.SeatInfo;
-import com.project.interfaces.ConcertRepositoryInterface;
-import com.project.interfaces.SeatRepositoryInterface;
-import org.assertj.core.api.Assertions;
+import com.project.application.dto.SeatInfo;
+import com.project.interfaces.ConcertRepository;
+import com.project.interfaces.SeatRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,17 +15,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ReservationLookupServiceTest {
 
     @Mock
-    ConcertRepositoryInterface concertRepo;
+    ConcertRepository concertRepo;
 
     @Mock
-    SeatRepositoryInterface seatRepo;
+    SeatRepository seatRepo;
 
     @InjectMocks
     ReservationLookupService lookupService;

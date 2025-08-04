@@ -1,13 +1,13 @@
 package com.project.infrastructure.persistence.users;
 
 import com.project.domain.entity.Users;
-import com.project.interfaces.UserRepositoryInterface;
+import com.project.interfaces.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public class JpaUserRepository implements UserRepositoryInterface {
+public class JpaUserRepository implements UserRepository {
 
     private final SpringDataUserRepository userRepository;
 

@@ -24,6 +24,10 @@ public class QueueToken {
         this.expiresAt = expiresAt;
     }
 
+    public boolean isExpired() {
+        return LocalDateTime.now().isAfter(this.expiresAt);
+    }
+
     public void expireNow() {
         this.expiresAt = LocalDateTime.now();
     }

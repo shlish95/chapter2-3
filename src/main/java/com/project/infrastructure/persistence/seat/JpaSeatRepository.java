@@ -1,8 +1,8 @@
 package com.project.infrastructure.persistence.seat;
 
-import com.project.domain.dto.SeatInfo;
+import com.project.application.dto.SeatInfo;
 import com.project.domain.entity.Seat;
-import com.project.interfaces.SeatRepositoryInterface;
+import com.project.interfaces.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class JpaSeatRepository implements SeatRepositoryInterface {
+public class JpaSeatRepository implements SeatRepository {
 
     private final SpringDataSeatRepository repo;
 
@@ -29,5 +29,10 @@ public class JpaSeatRepository implements SeatRepositoryInterface {
     @Override
     public Optional<Seat> findById(Long seatId) {
         return repo.findById(seatId);
+    }
+
+    @Override
+    public Optional<Seat> findByConcertIdAndSeatNumForUpdate(Long concertId, int seatNum) {
+        return repo.findByConcertIdAndSeatNum(concertId, seatNum);
     }
 }

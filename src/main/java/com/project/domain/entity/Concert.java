@@ -1,6 +1,5 @@
 package com.project.domain.entity;
 
-import com.project.interfaces.ConcertRepositoryInterface;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

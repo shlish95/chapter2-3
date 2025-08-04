@@ -4,7 +4,7 @@ import com.project.domain.entity.QueueToken;
 
 import java.util.Optional;
 
-public interface QueueTokenRepositoryInterface {
+public interface QueueTokenRepository {
     int nextQueuePosition();
     QueueToken save(QueueToken token);
     Optional<QueueToken> findByUserUuid(String userUuid);

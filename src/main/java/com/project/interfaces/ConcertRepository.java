@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface ConcertRepositoryInterface {
+public interface ConcertRepository {
     List<LocalDate> findDistinctDates();
     Optional<Concert> findByDate(LocalDate date);
 }

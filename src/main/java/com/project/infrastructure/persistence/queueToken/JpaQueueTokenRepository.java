@@ -1,7 +1,7 @@
 package com.project.infrastructure.persistence.queueToken;
 
 import com.project.domain.entity.QueueToken;
-import com.project.interfaces.QueueTokenRepositoryInterface;
+import com.project.interfaces.QueueTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class JpaQueueTokenRepository implements QueueTokenRepositoryInterface {
+public class JpaQueueTokenRepository implements QueueTokenRepository {
 
     private final SpringDataQueueTokenRepository tokenRepo;
 

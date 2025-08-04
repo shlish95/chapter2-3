@@ -1,6 +1,6 @@
 package com.project.domain.usecase;
 
-import com.project.domain.dto.SeatInfo;
+import com.project.application.dto.SeatInfo;
 
 import java.time.LocalDate;
 import java.util.List;

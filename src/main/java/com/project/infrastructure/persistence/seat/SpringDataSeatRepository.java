@@ -1,6 +1,6 @@
 package com.project.infrastructure.persistence.seat;
 
-import com.project.domain.dto.SeatInfo;
+import com.project.application.dto.SeatInfo;
 import com.project.domain.entity.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface SpringDataSeatRepository extends JpaRepository<Seat, Long> {
 
     @Query("""
-            SELECT new com.project.domain.dto.SeatInfo(s.seatNum, s.price)
+            SELECT new com.project.application.dto.SeatInfo(s.seatNum, s.price)
             FROM Seat s, Concert c
             WHERE s.concertId = c.concertId
               AND c.date = :date
