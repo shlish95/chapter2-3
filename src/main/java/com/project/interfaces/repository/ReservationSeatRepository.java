@@ -1,4 +1,4 @@
-package com.project.interfaces;
+package com.project.interfaces.repository;
 
 import com.project.domain.entity.ReservationSeat;
 

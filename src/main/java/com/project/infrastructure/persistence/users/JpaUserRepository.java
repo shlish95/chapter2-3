@@ -1,7 +1,7 @@
 package com.project.infrastructure.persistence.users;
 
 import com.project.domain.entity.Users;
-import com.project.interfaces.UserRepository;
+import com.project.interfaces.repository.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -23,5 +23,10 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public Optional<Users> findById(Long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
     }
 }

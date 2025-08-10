@@ -1,7 +1,7 @@
 package com.project.application.reserve;
 
 import com.project.domain.entity.ReservationSeat;
-import com.project.interfaces.ReservationSeatRepository;
+import com.project.interfaces.repository.ReservationSeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

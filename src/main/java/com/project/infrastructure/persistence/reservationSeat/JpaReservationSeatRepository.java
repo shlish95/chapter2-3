@@ -2,7 +2,7 @@ package com.project.infrastructure.persistence.reservationSeat;
 
 import com.project.domain.entity.ReservationSeat;
 import com.project.domain.enums.ReservationStatus;
-import com.project.interfaces.ReservationSeatRepository;
+import com.project.interfaces.repository.ReservationSeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,7 @@ public class JpaReservationSeatRepository implements ReservationSeatRepository {
 
     @Override
     public List<ReservationSeat> findByReservationId(Long reservationId) {
-        return repo.findByReservationId(reservationId);
+        return repo.findById_ReservationId(reservationId);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.project.application;
 
 import com.project.application.dto.SeatInfo;
-import com.project.interfaces.ConcertRepository;
-import com.project.interfaces.SeatRepository;
+import com.project.interfaces.repository.ConcertRepository;
+import com.project.interfaces.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

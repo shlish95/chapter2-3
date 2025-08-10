@@ -23,7 +23,7 @@ public interface SpringDataReservationSeatRepository extends JpaRepository<Reser
         """)
     boolean existsHold(@Param("seatId") Long seatId);
 
-    List<ReservationSeat> findByReservationId(Long reservationId);
+    List<ReservationSeat> findById_ReservationId(Long reservationId);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""

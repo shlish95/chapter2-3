@@ -2,7 +2,7 @@ package com.project.application.reserve;
 
 import com.project.domain.entity.Reservation;
 import com.project.domain.enums.ReservationStatus;
-import com.project.interfaces.ReservationRepository;
+import com.project.interfaces.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

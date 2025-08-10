@@ -24,6 +24,13 @@ public class QueueToken {
         this.expiresAt = expiresAt;
     }
 
+    public QueueToken(int queuePosition, String userUuid, LocalDateTime issuedAt, LocalDateTime expiresAt) {
+        this.queuePosition = queuePosition;
+        this.userUuid = userUuid;
+        this.issuedAt = issuedAt;
+        this.expiresAt = expiresAt;
+    }
+
     public boolean isExpired() {
         return LocalDateTime.now().isAfter(this.expiresAt);
     }
@@ -37,4 +44,8 @@ public class QueueToken {
     public int getQueuePosition() { return queuePosition; }
 
     public Long getUserId() { return userId; }
+
+    public LocalDateTime getIssuedAt() { return issuedAt; }
+
+    public LocalDateTime getExpiresAt() { return expiresAt; }
 }

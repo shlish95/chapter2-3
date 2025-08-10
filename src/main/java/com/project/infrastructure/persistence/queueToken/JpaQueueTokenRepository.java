@@ -1,13 +1,15 @@
 package com.project.infrastructure.persistence.queueToken;
 
 import com.project.domain.entity.QueueToken;
-import com.project.interfaces.QueueTokenRepository;
+import com.project.interfaces.repository.QueueTokenRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
+@Primary
 @RequiredArgsConstructor
 public class JpaQueueTokenRepository implements QueueTokenRepository {
 
@@ -40,5 +42,10 @@ public class JpaQueueTokenRepository implements QueueTokenRepository {
                     token.expireNow();
                     tokenRepo.save(token);
                 });
+    }
+
+    @Override
+    public void deleteAll() {
+        tokenRepo.deleteAll();
     }
 }

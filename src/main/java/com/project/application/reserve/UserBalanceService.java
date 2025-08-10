@@ -2,7 +2,7 @@ package com.project.application.reserve;
 
 import com.project.application.exception.InsufficientBalanceException;
 import com.project.domain.entity.Users;
-import com.project.interfaces.UserRepository;
+import com.project.interfaces.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

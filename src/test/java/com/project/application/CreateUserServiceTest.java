@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.Users;
-import com.project.interfaces.UserRepository;
+import com.project.interfaces.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;

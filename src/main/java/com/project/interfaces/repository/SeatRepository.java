@@ -1,4 +1,4 @@
-package com.project.interfaces;
+package com.project.interfaces.repository;
 
 import com.project.application.dto.SeatInfo;
 import com.project.domain.entity.Seat;

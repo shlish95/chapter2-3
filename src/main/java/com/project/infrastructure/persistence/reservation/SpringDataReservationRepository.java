@@ -25,7 +25,14 @@ public interface SpringDataReservationRepository extends JpaRepository<Reservati
             @Param("status") String status
     );
 
-    boolean existsBySeatIdAndStatusIn(Long seatId, List<ReservationStatus> status);
+    @Query("""
+        SELECT CASE WHEN COUNT(r) > 0 THEN TRUE ELSE FALSE END
+        FROM Reservation r
+        JOIN ReservationSeat rs ON r.reservationId = rs.id.reservationId
+        WHERE rs.id.seatId = :seatId AND r.status IN :statusList
+    """)
+    boolean existsReservationForSeat(@Param("seatId") Long seatId,
+                                     @Param("statusList") List<ReservationStatus> statusList);
 
     @Modifying
     @Query("UPDATE Reservation  r SET r.status = 'CANCELLED' WHERE r.status = 'HOLD' AND r.expiresAt < :now")

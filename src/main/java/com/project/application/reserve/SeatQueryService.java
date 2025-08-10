@@ -2,7 +2,7 @@ package com.project.application.reserve;
 
 import com.project.application.exception.SeatNotFoundException;
 import com.project.domain.entity.Seat;
-import com.project.interfaces.SeatRepository;
+import com.project.interfaces.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

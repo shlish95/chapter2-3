@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.Concert;
-import com.project.interfaces.ConcertRepository;
+import com.project.interfaces.repository.ConcertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

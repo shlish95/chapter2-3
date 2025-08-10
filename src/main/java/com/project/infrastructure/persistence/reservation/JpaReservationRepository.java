@@ -2,7 +2,7 @@ package com.project.infrastructure.persistence.reservation;
 
 import com.project.domain.entity.Reservation;
 import com.project.domain.enums.ReservationStatus;
-import com.project.interfaces.ReservationRepository;
+import com.project.interfaces.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +33,7 @@ public class JpaReservationRepository implements ReservationRepository {
 
     @Override
     public boolean existsActiveReservationBySeatId(Long seatId) {
-        return repo.existsBySeatIdAndStatusIn(seatId, List.of(ReservationStatus.HOLD, ReservationStatus.CONFIRMED));
+        return repo.existsReservationForSeat(seatId, List.of(ReservationStatus.HOLD, ReservationStatus.CONFIRMED));
     }
 
     @Override

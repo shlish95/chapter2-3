@@ -1,4 +1,4 @@
-package com.project.interfaces;
+package com.project.interfaces.repository;
 
 import com.project.domain.entity.QueueToken;
 
@@ -9,4 +9,6 @@ public interface QueueTokenRepository {
     QueueToken save(QueueToken token);
     Optional<QueueToken> findByUserUuid(String userUuid);
     void expire(String userUuid);
+
+    void deleteAll();
 }

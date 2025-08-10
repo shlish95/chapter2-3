@@ -1,7 +1,7 @@
 package com.project.infrastructure.persistence.reservationLookup;
 
 import com.project.domain.entity.Concert;
-import com.project.interfaces.ConcertRepository;
+import com.project.interfaces.repository.ConcertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

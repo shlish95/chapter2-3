@@ -1,6 +1,6 @@
 package com.project.application.reserve;
 
-import com.project.interfaces.ReservationRepository;
+import com.project.interfaces.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

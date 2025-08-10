@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.QueueToken;
-import com.project.interfaces.QueueTokenRepository;
+import com.project.interfaces.repository.QueueTokenRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

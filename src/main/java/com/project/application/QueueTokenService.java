@@ -1,7 +1,7 @@
 package com.project.application;
 
 import com.project.domain.entity.QueueToken;
-import com.project.interfaces.QueueTokenRepository;
+import com.project.interfaces.repository.QueueTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class QueueTokenService {
     public QueueToken issue(String userUuid) {
         Optional<QueueToken> optionalToken = tokenRepository.findByUserUuid(userUuid);
         if (optionalToken.isPresent() && !optionalToken.get().isExpired()) {
-            return optionalToken.get();
+            return tokenRepository.save(optionalToken.get());
         } else {
             int position = tokenRepository.nextQueuePosition();
             LocalDateTime now = LocalDateTime.now();
-            QueueToken newToken = new QueueToken(null, position, userUuid, now, now.plusMinutes(1));
+            QueueToken newToken = new QueueToken(position, userUuid, now, now.plusMinutes(1));
             return tokenRepository.save(newToken);
         }
     }

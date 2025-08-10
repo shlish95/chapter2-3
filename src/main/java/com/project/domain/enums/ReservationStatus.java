@@ -2,6 +2,7 @@ package com.project.domain.enums;
 
 public enum ReservationStatus {
     HOLD("임시 보류"),
+    PENDING_PAYMENT("결제 시도 중"),
     CONFIRMED("예약 확정"),
     CANCELLED("취소"),
     EXPIRED("만료");
