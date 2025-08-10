@@ -52,6 +52,8 @@ dependencies {
 	// testAnnotationProcessor도 있으면 좋아요
 	testCompileOnly("org.projectlombok:lombok:1.18.30")
 	testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
+
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 tasks.withType<Test> {

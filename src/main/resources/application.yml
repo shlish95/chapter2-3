@@ -29,3 +29,9 @@ spring:
     url: jdbc:mysql://localhost:3306/hhplus?characterEncoding=UTF-8&serverTimezone=UTC
     username: application
     password: application
+
+  jpa:
+    hibernate:
+      # 테스트에서는 스키마 자동 생성/삭제
+      ddl-auto: create-drop
+    show-sql: true

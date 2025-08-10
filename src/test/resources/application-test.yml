@@ -1,0 +1,13 @@
+spring.config.activate.on-profile: test
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/hhplus?characterEncoding=UTF-8&serverTimezone=UTC
+    username: application
+    password: application
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
