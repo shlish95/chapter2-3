@@ -1,8 +1,6 @@
 package com.project.interfaces.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.domain.entity.QueueToken;
-import com.project.domain.entity.Users;
 import com.project.interfaces.dto.QueueTokenRequest;
 import com.project.interfaces.repository.QueueTokenRepository;
 import kr.hhplus.be.server.ServerApplication;
@@ -16,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
@@ -35,20 +32,17 @@ class QueueTokenControllerTest  {
     @Autowired
     QueueTokenRepository queueTokenRepository;
 
-    private static final String userUuid = UUID.randomUUID().toString();
-
     @BeforeEach
     void setUp() {
         queueTokenRepository.deleteAll();
-
     }
 
-    @DisplayName("POST /api/tokens -> DB에 토큰 생성 후 반환")
+    @DisplayName("POST /api/tokens - 토큰 발급 (처음 발급 시 대기번호=1)")
     @Test
-    void issueToken_createRecordAndReturnsDtoTest() throws Exception {
+    void issueTokenTest() throws Exception {
         //given
-        QueueTokenRequest queueTokenRequest = new QueueTokenRequest(userUuid);
-        String body = objectMapper.writeValueAsString(queueTokenRequest);
+        String userUuid = UUID.randomUUID().toString();
+        String body = objectMapper.writeValueAsString(new QueueTokenRequest(userUuid));
 
         //when
         //then
@@ -60,37 +54,50 @@ class QueueTokenControllerTest  {
                 .andExpect(jsonPath("$.queuePosition").value(1))
                 .andExpect(jsonPath("$.issuedAt").isNotEmpty())
                 .andExpect(jsonPath("$.expiresAt").isNotEmpty());
-
-        QueueToken saved = queueTokenRepository.findByUserUuid(userUuid)
-                .orElseThrow(() -> new AssertionError("토큰이 저장되지 않았습니다."));
-        assertThat(saved.getUserUuid()).isEqualTo(userUuid);
-        assertThat(saved.getQueuePosition()).isEqualTo(1);
     }
 
-    @DisplayName("GET /api/tokens/{userUuid} -> DB 조회 후 JSON 반환")
+    @DisplayName("GET /api/tokens/{userUuid} - 기존 토큰 조회 (없으면 404)")
     @Test
     void getTokenTest() throws Exception {
         //given
-        LocalDateTime now = LocalDateTime.now();
-        int queuePosition = 5;
-
-        QueueToken pre = new QueueToken(
-                queuePosition,
-                userUuid,
-                now.minusMinutes(1),
-                now.plusMinutes(4)
-        );
-        queueTokenRepository.save(pre);
+        String userUuid = UUID.randomUUID().toString();
 
         //when
+        mockMvc.perform(post("/api/tokens")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new QueueTokenRequest(userUuid))))
+                .andExpect(status().isOk());
+
         //then
         mockMvc.perform(get("/api/tokens/{userUuid}", userUuid))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.userUuid").value(userUuid))
-                .andExpect(jsonPath("$.queuePosition").value(queuePosition))
-                .andExpect(jsonPath("$.issuedAt").isNotEmpty())
-                .andExpect(jsonPath("$.expiresAt").isNotEmpty());
+                .andExpect(jsonPath("$.queuePosition").value(1));
     }
 
+    @DisplayName("POST /api/tokens - 이미 유효한 토큰이 있으면 재사용")
+    @Test
+    void issueReusesExistingTest() throws Exception {
+        //given
+        String userUuid = UUID.randomUUID().toString();
+        String body = objectMapper.writeValueAsString(new QueueTokenRequest(userUuid));
 
+        //when
+        var res1 = mockMvc.perform(post("/api/tokens")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        var res2 = mockMvc.perform(post("/api/tokens")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        //then
+        String content1 = res1.getResponse().getContentAsString();
+        String content2 = res2.getResponse().getContentAsString();
+        assertThat(content1).isEqualTo(content2);
+    }
 }

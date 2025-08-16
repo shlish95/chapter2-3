@@ -6,5 +6,7 @@ public record QueueTokenResponse(
         String userUuid,
         int queuePosition,
         LocalDateTime issuedAt,
-        LocalDateTime expiresAt) {
+        LocalDateTime expiresAt,
+        Integer currentRank,
+        Long remainingSeconds) {
 }

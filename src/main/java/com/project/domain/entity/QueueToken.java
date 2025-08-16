@@ -2,26 +2,29 @@ package com.project.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "queue_token")
+@Table(
+        name = "queue_token",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_queue_token",
+                columnNames = "userUuid"
+        )
+)
 public class QueueToken {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private int queuePosition;
+
+    @Column(nullable = false)
     private String userUuid;
     private LocalDateTime issuedAt;
     private LocalDateTime expiresAt;
 
-    protected QueueToken() {}
-
-    public QueueToken(Long userId, int queuePosition, String userUuid, LocalDateTime issuedAt, LocalDateTime expiresAt) {
-        this.userId = userId;
-        this.queuePosition = queuePosition;
-        this.userUuid = userUuid;
-        this.issuedAt = issuedAt;
-        this.expiresAt = expiresAt;
+    protected QueueToken() {
     }
 
     public QueueToken(int queuePosition, String userUuid, LocalDateTime issuedAt, LocalDateTime expiresAt) {
@@ -31,21 +34,36 @@ public class QueueToken {
         this.expiresAt = expiresAt;
     }
 
+    public static QueueToken issue(int queuePosition, String userUuid, Duration ttl) {
+        LocalDateTime now = LocalDateTime.now();
+        return new QueueToken(queuePosition, userUuid, now, now.plus(ttl));
+    }
+
     public boolean isExpired() {
-        return LocalDateTime.now().isAfter(this.expiresAt);
+        return expiresAt != null && expiresAt.isBefore(LocalDateTime.now());
     }
 
     public void expireNow() {
         this.expiresAt = LocalDateTime.now();
     }
 
-    public String getUserUuid() { return userUuid; }
+    public String getUserUuid() {
+        return userUuid;
+    }
 
-    public int getQueuePosition() { return queuePosition; }
+    public int getQueuePosition() {
+        return queuePosition;
+    }
 
-    public Long getUserId() { return userId; }
+    public Long getUserId() {
+        return userId;
+    }
 
-    public LocalDateTime getIssuedAt() { return issuedAt; }
+    public LocalDateTime getIssuedAt() {
+        return issuedAt;
+    }
 
-    public LocalDateTime getExpiresAt() { return expiresAt; }
+    public LocalDateTime getExpiresAt() {
+        return expiresAt;
+    }
 }

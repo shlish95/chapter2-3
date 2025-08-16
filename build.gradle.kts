@@ -25,26 +25,33 @@ repositories {
 
 dependencyManagement {
 	imports {
+		mavenBom("org.springframework.boot:spring-boot-dependencies:3.4.1")
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:2024.0.0")
+		mavenBom("org.testcontainers:testcontainers-bom:1.20.2")
 	}
 }
 
 dependencies {
-    // Spring
+	// Spring
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // DB
 	runtimeOnly("com.mysql:mysql-connector-j")
 
+	//redis
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	implementation("org.redisson:redisson:3.27.2")
+
     // Test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
+	testImplementation("org.testcontainers:testcontainers")
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:mysql")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 
 	//lombok
 	compileOnly("org.projectlombok:lombok:1.18.30")
@@ -52,8 +59,6 @@ dependencies {
 	// testAnnotationProcessor도 있으면 좋아요
 	testCompileOnly("org.projectlombok:lombok:1.18.30")
 	testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
-
-	implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 tasks.withType<Test> {

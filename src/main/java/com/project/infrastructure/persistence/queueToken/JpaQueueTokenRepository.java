@@ -6,23 +6,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Repository
-@Primary
 @RequiredArgsConstructor
 public class JpaQueueTokenRepository implements QueueTokenRepository {
 
     private final SpringDataQueueTokenRepository tokenRepo;
 
-
     @Override
     public int nextQueuePosition() {
-        Integer max = tokenRepo.findAll().stream()
-                .mapToInt(QueueToken::getQueuePosition)
-                .max()
-                .orElse(0);
-        return max + 1;
+        return tokenRepo.nextQueuePosition();
     }
 
     @Override
@@ -37,15 +32,16 @@ public class JpaQueueTokenRepository implements QueueTokenRepository {
 
     @Override
     public void expire(String userUuid) {
-        tokenRepo.findByUserUuid(userUuid)
-                .ifPresent(token -> {
-                    token.expireNow();
-                    tokenRepo.save(token);
-                });
+        tokenRepo.expire(userUuid, LocalDateTime.now());
     }
 
     @Override
     public void deleteAll() {
         tokenRepo.deleteAll();
+    }
+
+    @Override
+    public int countActiveBefore(LocalDateTime now, LocalDateTime issuedAt) {
+        return tokenRepo.countActiveBefore(now, issuedAt);
     }
 }
