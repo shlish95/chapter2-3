@@ -25,6 +25,14 @@ public class ReservationCommandService {
         return reservationRepo.save(reservation);
     }
 
+    public Reservation create(Long userId, Long concertId,
+                              ReservationStatus status,
+                              LocalDateTime reservedAt,
+                              LocalDateTime expiresAt) {
+        Reservation reservation = new Reservation(userId, concertId, status, reservedAt, expiresAt);
+        return reservationRepo.save(reservation);
+    }
+
     public void updateStatus(Long reservationId, ReservationStatus status) {
         Reservation reservation = reservationRepo.findById(reservationId)
                 .orElseThrow(() -> new IllegalStateException("예약을 찾을 수 없습니다. "));
