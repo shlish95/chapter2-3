@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reservation")
@@ -55,4 +56,24 @@ public class Reservation {
     public LocalDateTime getExpiresAt() {
         return expiresAt;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // 같은 참조면 true
+        if (!(o instanceof Reservation)) return false;
+        Reservation that = (Reservation) o;
+
+        // PK가 없으면 아직 영속화 전이므로 equals는 false
+        if (this.reservationId == null || that.reservationId == null) {
+            return false;
+        }
+
+        return Objects.equals(this.reservationId, that.reservationId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(reservationId);
+    }
+
 }
