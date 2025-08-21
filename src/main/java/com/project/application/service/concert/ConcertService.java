@@ -1,8 +1,7 @@
-package com.project.application;
+package com.project.application.service.concert;
 
-import com.project.application.dto.SeatInfo;
+import com.project.domain.entity.Concert;
 import com.project.interfaces.repository.ConcertRepository;
-import com.project.interfaces.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +10,16 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ReservationLookupService {
+public class ConcertService {
 
     private final ConcertRepository concertRepo;
-    private final SeatRepository seatRepo;
 
     public List<LocalDate> getAvailableDates() {
         return concertRepo.findDistinctDates();
     }
 
-    public List<SeatInfo> getAvailableSeats(LocalDate date) {
-        return seatRepo.findAvailableSeatsByDate(date);
+    public Concert findByDate(LocalDate date) {
+        return concertRepo.findByDate(date)
+                .orElseThrow(() -> new IllegalArgumentException("해당 날짜의 콘서트가 없습니다."));
     }
 }

@@ -1,6 +1,6 @@
 package com.project.interfaces.controller;
 
-import com.project.application.BalanceService;
+import com.project.application.service.wallet.BalanceService;
 import com.project.domain.entity.Users;
 import com.project.interfaces.dto.ChargeRequest;
 import com.project.interfaces.dto.ChargeResponse;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor

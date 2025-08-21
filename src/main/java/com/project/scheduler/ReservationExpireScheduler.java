@@ -1,6 +1,6 @@
 package com.project.scheduler;
 
-import com.project.application.reserve.ReservationCommandService;
+import com.project.application.service.reservation.ReservationCommandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

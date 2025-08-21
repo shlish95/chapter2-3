@@ -1,5 +1,6 @@
 package com.project.application.reserve;
 
+import com.project.application.service.reservation.ReservationCommandService;
 import com.project.scheduler.ReservationExpireScheduler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package com.project.config;
 
-import com.project.application.QueueTokenQueryService;
+import com.project.application.service.queue.QueueTokenQueryService;
 import com.project.domain.entity.QueueToken;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

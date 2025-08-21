@@ -1,6 +1,7 @@
 package com.project.application;
 
 import com.project.application.dto.SeatInfo;
+import com.project.application.service.concert.ConcertQueryService;
 import com.project.interfaces.repository.ConcertRepository;
 import com.project.interfaces.repository.SeatRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ReservationLookupServiceTest {
+class ConcertQueryServiceTest {
 
     @Mock
     ConcertRepository concertRepo;
@@ -27,7 +28,7 @@ class ReservationLookupServiceTest {
     SeatRepository seatRepo;
 
     @InjectMocks
-    ReservationLookupService lookupService;
+    ConcertQueryService lookupService;
 
     @DisplayName("예약 가능 날짜 조회")
     @Test

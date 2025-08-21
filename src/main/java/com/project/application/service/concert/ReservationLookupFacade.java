@@ -1,7 +1,5 @@
-package com.project.application.facade;
+package com.project.application.service.concert;
 
-import com.project.application.ConcertService;
-import com.project.application.SeatService;
 import com.project.application.dto.SeatInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.project.interfaces.controller;
 
-import com.project.application.facade.PaymentFacade;
-import com.project.application.facade.QueueTokenFacade;
+import com.project.application.service.payment.PaymentFacade;
+import com.project.application.service.queue.QueueTokenFacade;
 import com.project.domain.enums.ReservationStatus;
 import com.project.interfaces.dto.PayRequest;
 import com.project.interfaces.dto.PayResponse;
@@ -9,8 +9,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor

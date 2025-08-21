@@ -1,8 +1,9 @@
 package com.project.application.facade;
 
-import com.project.application.ConcertService;
-import com.project.application.SeatService;
+import com.project.application.service.concert.ConcertService;
+import com.project.application.service.concert.SeatService;
 import com.project.application.dto.SeatInfo;
+import com.project.application.service.concert.ReservationLookupFacade;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

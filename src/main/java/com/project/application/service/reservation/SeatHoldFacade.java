@@ -1,12 +1,9 @@
-package com.project.application.facade;
+package com.project.application.service.reservation;
 
-import com.project.application.ConcertService;
-import com.project.application.SeatService;
+import com.project.application.service.concert.SeatService;
 import com.project.application.dto.ReservationResult;
 import com.project.application.exception.SeatAlreadyReservedException;
-import com.project.application.reserve.ReservationCommandService;
-import com.project.application.reserve.ReservationSeatCommandService;
-import com.project.application.reserve.SeatReservationService;
+import com.project.application.service.concert.ConcertService;
 import com.project.domain.entity.Concert;
 import com.project.domain.entity.Reservation;
 import com.project.domain.entity.Seat;
@@ -15,7 +12,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

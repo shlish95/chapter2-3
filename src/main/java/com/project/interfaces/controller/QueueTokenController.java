@@ -1,6 +1,6 @@
 package com.project.interfaces.controller;
 
-import com.project.application.facade.QueueTokenFacade;
+import com.project.application.service.queue.QueueTokenFacade;
 import com.project.domain.entity.QueueToken;
 import com.project.interfaces.dto.QueueTokenRequest;
 import com.project.interfaces.dto.QueueTokenResponse;

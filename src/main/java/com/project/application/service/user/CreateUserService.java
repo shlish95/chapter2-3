@@ -1,4 +1,4 @@
-package com.project.application;
+package com.project.application.service.user;
 
 import com.project.domain.entity.Users;
 import com.project.interfaces.repository.UserRepository;

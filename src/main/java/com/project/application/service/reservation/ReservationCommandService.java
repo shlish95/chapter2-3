@@ -1,4 +1,4 @@
-package com.project.application.reserve;
+package com.project.application.service.reservation;
 
 import com.project.domain.entity.Reservation;
 import com.project.domain.enums.ReservationStatus;
@@ -13,17 +13,6 @@ import java.time.LocalDateTime;
 public class ReservationCommandService {
 
     private final ReservationRepository reservationRepo;
-
-    public Reservation createPendingReservation(Long userId, Long concertId, LocalDateTime now, LocalDateTime expiresAt) {
-        Reservation reservation = new Reservation(
-                userId,
-                concertId,
-                ReservationStatus.HOLD,
-                now,
-                expiresAt
-        );
-        return reservationRepo.save(reservation);
-    }
 
     public Reservation create(Long userId, Long concertId,
                               ReservationStatus status,

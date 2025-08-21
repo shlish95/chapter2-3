@@ -1,4 +1,4 @@
-package com.project.application.reserve;
+package com.project.application.service.reservation;
 
 import com.project.interfaces.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;

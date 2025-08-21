@@ -1,4 +1,4 @@
-package com.project.application;
+package com.project.application.service.concert;
 
 import com.project.application.dto.SeatInfo;
 import com.project.domain.entity.Seat;

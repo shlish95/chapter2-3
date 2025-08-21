@@ -1,6 +1,5 @@
-package com.project.application.facade;
+package com.project.application.service.queue;
 
-import com.project.application.*;
 import com.project.domain.entity.QueueToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.project.application;
+package com.project.application.service.queue;
 
 import com.project.domain.entity.QueueToken;
 import com.project.interfaces.repository.QueueTokenRepository;

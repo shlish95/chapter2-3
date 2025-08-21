@@ -1,7 +1,7 @@
 package com.project.interfaces.controller;
 
 import com.project.application.dto.ReservationResult;
-import com.project.application.facade.SeatHoldFacade;
+import com.project.application.service.reservation.SeatHoldFacade;
 import com.project.interfaces.dto.HoldSeatRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

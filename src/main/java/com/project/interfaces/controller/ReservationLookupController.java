@@ -1,7 +1,7 @@
 package com.project.interfaces.controller;
 
 import com.project.application.dto.SeatInfo;
-import com.project.application.facade.ReservationLookupFacade;
+import com.project.application.service.concert.ReservationLookupFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;

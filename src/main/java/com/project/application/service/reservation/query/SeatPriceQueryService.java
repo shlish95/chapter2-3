@@ -1,4 +1,4 @@
-package com.project.application;
+package com.project.application.service.reservation.query;
 
 import com.project.domain.entity.Seat;
 import com.project.interfaces.repository.SeatRepository;
