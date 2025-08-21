@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class JpaSeatRepository implements SeatRepository {
 
     @Override
     public List<SeatInfo> findAvailableSeatsByDate(LocalDate date) {
-        return repo.findAvailableSeatsByDate(date);
+        return repo.findAvailableSeatsByDate(date, LocalDateTime.now());
     }
 
     @Override

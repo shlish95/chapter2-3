@@ -4,6 +4,7 @@ import com.project.application.BalanceService;
 import com.project.domain.entity.Users;
 import com.project.interfaces.dto.ChargeRequest;
 import com.project.interfaces.dto.ChargeResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class BalanceController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<ChargeResponse> get(@PathVariable Long userId) {
+    public ResponseEntity<ChargeResponse> get(@PathVariable @Valid Long userId) {
         BigDecimal balance = balanceService.getBalance(userId);
         return ResponseEntity.ok(new ChargeResponse(userId, balance));
     }

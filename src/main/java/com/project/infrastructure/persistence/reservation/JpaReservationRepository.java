@@ -33,7 +33,7 @@ public class JpaReservationRepository implements ReservationRepository {
 
     @Override
     public boolean existsActiveReservationBySeatId(Long seatId) {
-        return repo.existsReservationForSeat(seatId, List.of(ReservationStatus.HOLD, ReservationStatus.CONFIRMED));
+        return repo.existsActiveReservationBySeatId(seatId, LocalDateTime.now());
     }
 
     @Override

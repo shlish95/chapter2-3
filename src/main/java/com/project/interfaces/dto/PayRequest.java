@@ -1,9 +1,10 @@
 package com.project.interfaces.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 
 public record PayRequest(
-        @JsonProperty("userId") Long userId,
-        @JsonProperty("reservationId") Long reservationId
+        @NotNull @JsonProperty("userId") Long userId,
+        @NotNull @JsonProperty("reservationId") Long reservationId
 ) {
 }
